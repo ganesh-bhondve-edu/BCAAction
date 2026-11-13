@@ -1,18 +1,19 @@
-name: My First Windows Action
+name: Run Python Script
 
-# This tells GitHub when to run the action: every time you push code
 on: [push]
 
 jobs:
-  say-hello:
-    runs-on: windows-latest  # Runs on a Microsoft-hosted Windows virtual machine
+  run-python:
+    runs-on: ubuntu-latest # आपण लिनक्स किंवा विंडोज काहीही वापरू शकतो
 
     steps:
-      - name: Checkout code
+      - name: Code चेकिंग (Checkout)
         uses: actions/checkout@v4
 
-      - name: Print a greeting
-        run: echo "Hello from Windows 11 and GitHub Actions! Your code update was received successfully."
+      - name: Python इन्स्टॉल करणे
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-      - name: Show current date and time
-        run: Get-Date
+      - name: Python फाईल रन करणे
+        run: python hello.py
