@@ -4,16 +4,16 @@ on: [push]
 
 jobs:
   run-python:
-    runs-on: ubuntu-latest # आपण लिनक्स किंवा विंडोज काहीही वापरू शकतो
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Code चेकिंग (Checkout)
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Python इन्स्टॉल करणे
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Python फाईल रन करणे
+      - name: Run Python file
         run: python hello.py
